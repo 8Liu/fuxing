@@ -6,9 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="fuxing-item" />
         <module name="fuxing-framework" />
         <module name="fuxing-common" />
+        <module name="fuxing-item-service" />
+        <module name="fuxing-item-api" />
         <module name="fuxing-eureka" />
       </profile>
     </annotationProcessing>
@@ -20,6 +21,8 @@
       <module name="fuxing-eureka" options="-parameters" />
       <module name="fuxing-framework" options="-parameters" />
       <module name="fuxing-item" options="-parameters" />
+      <module name="fuxing-item-api" options="-parameters" />
+      <module name="fuxing-item-service" options="-parameters" />
     </option>
   </component>
 </project>
