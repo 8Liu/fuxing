@@ -1,0 +1,68 @@
+server:
+  port: 18071
+spring:
+  application:
+    name: "fx-item"
+  # 数据库配置
+  datasource:
+    name: fx-item
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/leyou?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+    username: root
+    password: 123456
+    driverClassName: com.mysql.jdbc.Driver
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 'x' FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    # 检测连接池泄露
+    removeAbandoned: true
+    removeAbandonedTimeout: 1800
+    logAbandoned: true
+    # encrypt password
+    filters: stat,wall,log4j
+    connectionProperties: "druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000"
+    poolPreparedStatements: false
+    maxOpenPreparedStatements: 20
+    useGlobalDataSourceStat: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:18070/eureka
+
+# druid monitor 配置
+druid:
+  wiki:
+    # WebStatFilter配置，说明请参考Druid Wiki，配置_配置WebStatFilter
+    webStatFilter:
+      enabled: true #是否启用StatFilter默认值true
+      urlPattern: "/*"
+      exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+      sessionStatEnable:
+      sessionStatMaxCount:
+      principalSessionName:
+      principalCookieName:
+      profileEnable:
+    # StatViewServlet配置，说明请参考Druid Wiki，配置_StatViewServlet配置
+    statViewServlet:
+      enabled: true #是否启用StatViewServlet默认值true
+      urlPattern: "/druid/*"
+      resetEnable: false
+      loginUsername: liudehuang
+      loginPassword: liudehuang
+      allow: ""
+      deny: ""
+mybatis:
+  mapper-locations: "classpath:mapper/*Mapper.xml"
+
+logging:
+  level:
+    com.liudehuang: debug
+    org.springframework.data: debug
+    org.apache.ibatis: debug
